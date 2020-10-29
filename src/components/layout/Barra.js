@@ -1,10 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../../context/autenticacion/authContext";
+import { useHistory } from "react-router-dom";
 
 const Barra = () => {
   // Extraer la información de autenticación
   const authContext = useContext(AuthContext);
   const { usuario, usuarioAutenticado, cerrarSesion } = authContext;
+
+  const history = useHistory();
 
   useEffect(() => {
     usuarioAutenticado();
@@ -21,8 +24,12 @@ const Barra = () => {
 
       <nav className="nav-principal">
         <button
+          data-cy="cerrar-sesion"
           className="btn btn-blank cerrar-sesion"
-          onClick={() => cerrarSesion()}
+          onClick={() => {
+            cerrarSesion();
+            history.push("/");
+          }}
         >
           Cerrar Sesión
         </button>
