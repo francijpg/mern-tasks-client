@@ -93,6 +93,7 @@ const FormTarea = () => {
             name="nombre"
             value={nombre}
             onChange={handleChange}
+            data-cy="input-tarea"
           />
         </div>
 
@@ -101,12 +102,13 @@ const FormTarea = () => {
             type="submit"
             className="btn btn-primario btn-submit btn-block"
             value={tareaseleccionada ? "Editar Tarea" : "Agregar Tarea"}
+            data-cy="submit-tarea"
           />
         </div>
       </form>
 
       {errortarea ? (
-        <p className="mensaje error">El nombre de la tarea es obligatorio</p>
+        <p className="mensaje error" data-cy="alerta">El nombre de la tarea es obligatorio</p>
       ) : null}
     </div>
   );
