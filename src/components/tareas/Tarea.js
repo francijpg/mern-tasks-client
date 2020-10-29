@@ -41,12 +41,13 @@ const Tarea = ({ tarea }) => {
   };
 
   return (
-    <li className="tarea sombra">
+    <li data-cy="tarea" className="tarea sombra">
       <p>{tarea.nombre} </p>
 
       <div className="estado">
         {tarea.estado ? (
           <button
+            data-cy="tarea-completa"
             type="button"
             className="completo"
             onClick={() => cambiarEstado(tarea)}
@@ -55,6 +56,7 @@ const Tarea = ({ tarea }) => {
           </button>
         ) : (
           <button
+            data-cy="tarea-incompleta"
             type="button"
             className="incompleto"
             onClick={() => cambiarEstado(tarea)}
@@ -69,6 +71,7 @@ const Tarea = ({ tarea }) => {
           type="button"
           className="btn btn-primario"
           onClick={() => seleccionarTarea(tarea)}
+          data-cy="btn-editar"
         >
           Editar
         </button>
@@ -77,6 +80,7 @@ const Tarea = ({ tarea }) => {
           type="button"
           className="btn btn-secundario"
           onClick={() => tareaEliminar(tarea._id)}
+          data-cy="btn-eliminar"
         >
           Eliminar
         </button>
