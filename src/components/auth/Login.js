@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AlertaContext from "../../context/alertas/alertaContext";
 import AuthContext from "../../context/autenticacion/authContext";
+import Alerta from "../layout/Alerta";
 
 const Login = (props) => {
   // extraer los valores del context
@@ -54,17 +55,17 @@ const Login = (props) => {
 
   return (
     <div className="form-usuario">
-      {alerta ? (
-        <div className={`alerta ${alerta.categoria}`}> {alerta.msg} </div>
-      ) : null}
+      <Alerta alerta={alerta} />
+    {/* { alerta ? ( <div data-cy="alerta" className={`alerta ${alerta.categoria}`}>{alerta.msg}</div>)  : null } */}
 
       <div className="contenedor-form sombra-dark">
-        <h1>Iniciar Sesión</h1>
+        <h1 data-cy="titulo">Iniciar Sesión</h1>
 
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} data-cy="form-login">
           <div className="campo-form">
             <label htmlFor="email">Email</label>
             <input
+              data-cy="email-input"
               type="email"
               id="email"
               name="email"
@@ -77,6 +78,7 @@ const Login = (props) => {
           <div className="campo-form">
             <label htmlFor="password">Password</label>
             <input
+              data-cy="password-input"
               type="password"
               id="password"
               name="password"
@@ -88,6 +90,7 @@ const Login = (props) => {
 
           <div className="campo-form">
             <input
+              data-cy="submit-login"
               type="submit"
               className="btn btn-primario btn-block"
               value="Iniciar Sesión"
@@ -95,7 +98,7 @@ const Login = (props) => {
           </div>
         </form>
 
-        <Link to={"/nueva-cuenta"} className="enlace-cuenta">
+        <Link data-cy="nueva-cuenta" to={"/nueva-cuenta"} className="enlace-cuenta">
           Obtener Cuenta
         </Link>
       </div>
